@@ -1,11 +1,11 @@
 import { ListItem, IconButton, ListItemText, Box } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
-import ToDoItem from "./ToDoItem";
 import { useState } from "react";
 
 
 export default function ListCategoryItem({tc, handleDelete}) {
     const [showMe, setShowMe] = useState(false);
+    
 
     const handleClick = () => {
       if (showMe === false) {
@@ -17,7 +17,6 @@ export default function ListCategoryItem({tc, handleDelete}) {
     }
 
     return (
-        <div style={{display: "flex"}}>
         <Box maxWidth={220}>
         <ListItem
                   secondaryAction={
@@ -28,12 +27,11 @@ export default function ListCategoryItem({tc, handleDelete}) {
                 >
             <ListItemText style={{cursor: "pointer"}} onClick={handleClick}>{tc.name}</ListItemText>
         </ListItem>
+        {showMe ? 
+          tc.items.map((item) => {
+          return <p key={item.id}>{item.text}</p>
+          })
+         : null}
         </Box>
-        {showMe === true ?
-          <ToDoItem data={tc} />
-          : null
-        }
-        
-        </div>
     )
 }
