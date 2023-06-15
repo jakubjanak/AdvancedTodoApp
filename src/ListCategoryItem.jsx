@@ -1,19 +1,12 @@
 import { ListItem, IconButton, ListItemText, Box } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useState } from "react";
 
 
-export default function ListCategoryItem({tc, handleDelete}) {
-    const [showMe, setShowMe] = useState(false);
+export default function ListCategoryItem({tc, handleDelete, updatingClicked}) {
     
 
     const handleClick = () => {
-      if (showMe === false) {
-        setShowMe(true);
-      } else {
-        setShowMe(false);
-      }
-      
+      updatingClicked(tc.id);
     }
 
     return (
@@ -27,11 +20,6 @@ export default function ListCategoryItem({tc, handleDelete}) {
                 >
             <ListItemText style={{cursor: "pointer"}} onClick={handleClick}>{tc.name}</ListItemText>
         </ListItem>
-        {showMe ? 
-          tc.items.map((item) => {
-          return <p key={item.id}>{item.text}</p>
-          })
-         : null}
         </Box>
     )
 }
