@@ -24,6 +24,7 @@ export default function ListCategoryContainer() {
         })
     }
 
+
     // updatování clicked, aby při kliknutí na kategorii byli vidět jen itemy, které do ní patří
     const updatingClicked = (id) => {
         const change = todoCat.map((tc) => {
@@ -33,9 +34,9 @@ export default function ListCategoryContainer() {
                 } else {
                     return {...tc, clicked: false}
                 }
-                
             } else {
-                return tc;
+                // ochrana - při kliknutí na jinou kategorii ta předchozí zmizí
+                return {...tc, clicked: false};
             }
         })
         setTodoCat(change);
