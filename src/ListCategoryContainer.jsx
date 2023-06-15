@@ -1,11 +1,12 @@
-import { List, Typography, Box } from "@mui/material";
+import { List, Typography, Box, Divider } from "@mui/material";
 import { useState } from "react";
 import ListCategoryItem from "./ListCategoryItem";
 import AddCategoryForm from "./AddCategoryForm";
+import Todos from "./Todos";
 
 export default function ListCategoryContainer() {
     const initialValues = [
-        {id: crypto.randomUUID(), name: "Personal", items: [{id: crypto.randomUUID(), text: "Empty the trash!"}], clicked: false},
+        {id: crypto.randomUUID(), name: "Personal", items: [{id: crypto.randomUUID(), text: "Empty the trash!"}, {id: crypto.randomUUID(), text: "Enjoy yourself!"}, {id: crypto.randomUUID(), text: "Do homework!"}], clicked: false},
         {id: crypto.randomUUID(), name: "Work", items: [{id: crypto.randomUUID(), text: "Wash the dishes!"}], clicked: false},
         {id: crypto.randomUUID(), name: "Home", items: [{id: crypto.randomUUID(), text: "Go for the walk with a dog!"}], clicked: false},
     ]
@@ -45,6 +46,7 @@ export default function ListCategoryContainer() {
     
 
     return (
+        <div style={{display: "flex"}}>
         <Box m={3}>
             <Typography variant="h4" component="h1" mb={2}>Categories</Typography>
             <AddCategoryForm addNewCategory={addNewCategory} />
@@ -53,13 +55,20 @@ export default function ListCategoryContainer() {
                     return <ListCategoryItem key={tc.id} tc={tc} setTodoCat={setTodoCat} todoCat={todoCat} handleDelete={() => handleDelete(tc.id)} updatingClicked={updatingClicked} />
                 })}
             </List>
+        </Box>
+        <Divider orientation="vertical" flexItem />
+        <Box m={3} style={{display: "flex", flexDirection: "column", justifyContent: "start"}}>
+            <Typography variant="h4" component="h1">Todos</Typography>
+            <List>
             {todoCat.map((tcClicked) => {
                 if (tcClicked.clicked === true) {
                     return tcClicked.items.map((item) => {
-                        return <p key={item.id}>{item.text}</p>
+                        return <Todos key={item.id} text={item.text} />
                     })
                 }
             })}
+            </List>
         </Box>
+        </div>
     )
 }
