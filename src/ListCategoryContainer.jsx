@@ -25,11 +25,22 @@ export default function ListCategoryContainer() {
         })
     }
 
+    const addingTodos = () => {
+        let newTodoCat = todoCat;
+        newTodoCat.map((tc) => {
+            if (tc.clicked) {
+                const items = tc.items;
+                items.push({id: crypto.randomUUID(), text: "HELLO THERE!"});
+            }
+        })
+        setTodoCat(newTodoCat);
+    }
+
     // updatování clicked, aby při kliknutí na kategorii byli vidět jen itemy, které do ní patří
     const updatingClicked = (id) => {
         const change = todoCat.map((tc) => {
             if (tc.id === id) {
-                if (tc.clicked === false) {
+                if (!tc.clicked) {
                     return {...tc, clicked: true}
                 } else {
                     return {...tc, clicked: false}
@@ -50,7 +61,9 @@ export default function ListCategoryContainer() {
             <Typography variant="h4" component="h1" mb={2}>Categories</Typography>
             <AddCategoryForm addNewCategory={addNewCategory} />
             <List>
-                {todoCat.map((tc) => {
+                {
+                
+                todoCat.map((tc) => {
                     return <ListCategoryItem key={tc.id} tc={tc} setTodoCat={setTodoCat} todoCat={todoCat} handleDelete={() => handleDelete(tc.id)} updatingClicked={updatingClicked} />
                 })}
             </List>
@@ -58,7 +71,7 @@ export default function ListCategoryContainer() {
         <Divider orientation="vertical" flexItem />
         <Box m={3} style={{display: "flex", flexDirection: "column", justifyContent: "start"}}>
             <Typography variant="h4" component="h1">Todos</Typography>
-            <Todos data={todoCat} setData={setTodoCat} />
+            <Todos data={todoCat} addingTodos={addingTodos} />
         </Box>
         </div>
     )

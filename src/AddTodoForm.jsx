@@ -2,7 +2,7 @@ import { TextField, InputAdornment, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
 
-export default function AddTodoForm() {
+export default function AddTodoForm({addingTodos}) {
     const [todo, setTodo] = useState("") ;
 
     const handleChange = (e) => {
@@ -12,6 +12,7 @@ export default function AddTodoForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // const data = {id: crypto.randomUUID(), text: todo};
+        addingTodos();
         setTodo("");
     }
 

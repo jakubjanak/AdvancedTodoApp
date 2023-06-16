@@ -2,14 +2,14 @@ import { ListItem, IconButton, ListItemText, List } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddTodoForm from "./AddTodoForm";
 
-export default function Todos({data}) {
+export default function Todos({data, addingTodos}) {
 
     return (
         <>
         <List>
-            <AddTodoForm />
+            <AddTodoForm addingTodos={addingTodos} />
             {data.map((d) => {                
-                if (d.clicked === true) {
+                if (d.clicked) {
                     return (
                         d.items.map((item) => {
                         return (
