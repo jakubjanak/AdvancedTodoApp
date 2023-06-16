@@ -25,7 +25,6 @@ export default function ListCategoryContainer() {
         })
     }
 
-
     // updatování clicked, aby při kliknutí na kategorii byli vidět jen itemy, které do ní patří
     const updatingClicked = (id) => {
         const change = todoCat.map((tc) => {
@@ -59,15 +58,7 @@ export default function ListCategoryContainer() {
         <Divider orientation="vertical" flexItem />
         <Box m={3} style={{display: "flex", flexDirection: "column", justifyContent: "start"}}>
             <Typography variant="h4" component="h1">Todos</Typography>
-            <List>
-            {todoCat.map((tcClicked) => {
-                if (tcClicked.clicked === true) {
-                    return tcClicked.items.map((item) => {
-                        return <Todos key={item.id} text={item.text} />
-                    })
-                }
-            })}
-            </List>
+            <Todos data={todoCat} setData={setTodoCat} />
         </Box>
         </div>
     )

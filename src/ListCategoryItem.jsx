@@ -10,16 +10,18 @@ export default function ListCategoryItem({tc, handleDelete, updatingClicked}) {
     }
 
     return (
-        <Box maxWidth={220}>
+      <Box maxWidth={220}>
         <ListItem
-                  secondaryAction={
-                    <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
-                      <DeleteIcon />
-                    </IconButton>
-                  }
-                >
-            <ListItemText style={{cursor: "pointer"}} onClick={handleClick}>{tc.name}</ListItemText>
+          secondaryAction={
+            <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
+              <DeleteIcon />
+            </IconButton>
+          }
+        >
+          <ListItemText style={{ cursor: "pointer" }} onClick={handleClick}>
+            {tc.name}
+          </ListItemText>
         </ListItem>
-        </Box>
-    )
+      </Box>
+    );
 }
