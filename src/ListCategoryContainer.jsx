@@ -25,15 +25,17 @@ export default function ListCategoryContainer() {
         })
     }
 
-    const addingTodos = () => {
-        let newTodoCat = todoCat;
+    const addingTodos = (data) => {
+        let newTodoCat = [];
+        newTodoCat = todoCat;
         newTodoCat.map((tc) => {
             if (tc.clicked) {
                 const items = tc.items;
-                items.push({id: crypto.randomUUID(), text: "HELLO THERE!"});
+                items.push(data);
             }
         })
-        setTodoCat(newTodoCat);
+        // this fking works!
+        setTodoCat([...newTodoCat]);
     }
 
     // updatování clicked, aby při kliknutí na kategorii byli vidět jen itemy, které do ní patří
