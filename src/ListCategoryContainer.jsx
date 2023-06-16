@@ -19,6 +19,18 @@ export default function ListCategoryContainer() {
         })
     }
 
+    const handleTodoItemDelete = (todoId) => {
+        let updatedArray = [];
+        updatedArray = todoCat;
+        updatedArray = todoCat.map((category) => {
+            if (category.items) {
+                category.items = category.items.filter((item) => item.id !== todoId);
+            }
+            return category;
+        })
+        setTodoCat([...updatedArray]);
+    }
+
     const addNewCategory = (newCategory) => {
         setTodoCat((prevValues) => {
             return [...prevValues, newCategory];
@@ -72,7 +84,7 @@ export default function ListCategoryContainer() {
         </Box>
         <Divider orientation="vertical" flexItem />
         <Box m={3} style={{display: "flex", flexDirection: "column", justifyContent: "start"}}>
-            <Todos data={todoCat} addingTodos={addingTodos} />
+            <Todos data={todoCat} addingTodos={addingTodos} handleTodoItemDelete={handleTodoItemDelete} />
         </Box>
         </div>
     )

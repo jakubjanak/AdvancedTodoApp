@@ -2,7 +2,7 @@ import { ListItem, IconButton, ListItemText, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddTodoForm from "./AddTodoForm"
 
-export default function TodosItems({d, addingTodos}) {
+export default function TodosItems({d, addingTodos, handleTodoItemDelete}) {
     return (
         <>
         <Typography variant="h4" commponent="h1" mb={2}>{d.name}</Typography>
@@ -12,7 +12,7 @@ export default function TodosItems({d, addingTodos}) {
                 <ListItem
                 key={dItem.id}
                 secondaryAction={
-                  <IconButton edge="end" aria-label="delete">
+                  <IconButton edge="end" aria-label="delete" onClick={() => handleTodoItemDelete(dItem.id)}>
                     <DeleteIcon />
                   </IconButton>
                 }
