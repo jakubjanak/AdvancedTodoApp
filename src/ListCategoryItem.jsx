@@ -3,8 +3,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function ListCategoryItem({tc, handleDelete, updatingClicked}) {
-    
-
     const handleClick = () => {
       updatingClicked(tc.id);
     }

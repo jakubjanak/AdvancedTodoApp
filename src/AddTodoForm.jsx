@@ -17,7 +17,7 @@ export default function AddTodoForm({addingTodos}) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{marginBottom: "0.5rem"}}>
             <TextField
                 label="Add Task"
                 variant="outlined"

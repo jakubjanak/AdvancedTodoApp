@@ -5,13 +5,13 @@ import AddCategoryForm from "./AddCategoryForm";
 import Todos from "./Todos";
 
 export default function ListCategoryContainer() {
-    const initialValues = [
-        {id: crypto.randomUUID(), name: "Personal", items: [{id: crypto.randomUUID(), text: "Empty the trash!"}, {id: crypto.randomUUID(), text: "Enjoy yourself!"}, {id: crypto.randomUUID(), text: "Do homework!"}], clicked: false},
-        {id: crypto.randomUUID(), name: "Work", items: [{id: crypto.randomUUID(), text: "Wash the dishes!"}], clicked: false},
-        {id: crypto.randomUUID(), name: "Home", items: [{id: crypto.randomUUID(), text: "Go for the walk with a dog!"}], clicked: false},
-    ]
+    // const initialValues = [
+    //     {id: crypto.randomUUID(), name: "Personal", items: [{id: crypto.randomUUID(), text: "Empty the trash!"}, {id: crypto.randomUUID(), text: "Enjoy yourself!"}, {id: crypto.randomUUID(), text: "Do homework!"}], clicked: false},
+    //     {id: crypto.randomUUID(), name: "Work", items: [{id: crypto.randomUUID(), text: "Wash the dishes!"}], clicked: false},
+    //     {id: crypto.randomUUID(), name: "Home", items: [{id: crypto.randomUUID(), text: "Go for the walk with a dog!"}], clicked: false},
+    // ]
 
-    const [todoCat, setTodoCat] = useState(initialValues);
+    const [todoCat, setTodoCat] = useState([]);
 
     const handleDelete = (id) => {
         setTodoCat((prevValues) => {
@@ -72,7 +72,6 @@ export default function ListCategoryContainer() {
         </Box>
         <Divider orientation="vertical" flexItem />
         <Box m={3} style={{display: "flex", flexDirection: "column", justifyContent: "start"}}>
-            <Typography variant="h4" component="h1">Todos</Typography>
             <Todos data={todoCat} addingTodos={addingTodos} />
         </Box>
         </div>
