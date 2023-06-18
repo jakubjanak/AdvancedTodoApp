@@ -1,5 +1,5 @@
 import { List, Typography, Box, Divider } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ListCategoryItem from "./ListCategoryItem";
 import AddCategoryForm from "./AddCategoryForm";
 import Todos from "./Todos";
@@ -11,7 +11,20 @@ export default function ListCategoryContainer() {
     //     {id: crypto.randomUUID(), name: "Home", items: [{id: crypto.randomUUID(), text: "Go for the walk with a dog!"}], clicked: false},
     // ]
 
-    const [todoCat, setTodoCat] = useState([]);
+    const getInitialData = () => {
+        const data = JSON.parse(localStorage.getItem('todos'));
+        if (!data) return [];
+        return data;
+    }
+
+    const [todoCat, setTodoCat] = useState(getInitialData);
+
+    useEffect(() => {
+        localStorage.setItem(
+            'todos',
+            JSON.stringify(todoCat)
+        )
+    }, [todoCat])
 
     const handleDelete = (id) => {
         setTodoCat((prevValues) => {
