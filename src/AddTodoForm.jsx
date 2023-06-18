@@ -11,7 +11,7 @@ export default function AddTodoForm({addingTodos}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = {id: crypto.randomUUID(), text: todo};
+        const data = {id: crypto.randomUUID(), text: todo, completed: false};
         addingTodos(data);
         setTodo("");
     }

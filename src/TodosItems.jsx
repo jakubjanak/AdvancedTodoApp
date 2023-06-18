@@ -1,8 +1,12 @@
-import { ListItem, IconButton, ListItemText, Typography } from "@mui/material"
+import { ListItem, IconButton, ListItemText, Typography, Checkbox, ListItemButton, ListItemIcon } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddTodoForm from "./AddTodoForm"
 
-export default function TodosItems({d, addingTodos, handleTodoItemDelete}) {
+export default function TodosItems({d, addingTodos, handleTodoItemDelete, toggleCheckbox}) {
+    const handleChange = (id) => {
+      toggleCheckbox(id);
+    }
+
     return (
         <>
         <Typography variant="h4" commponent="h1" mb={2}>{d.name}</Typography>
@@ -16,8 +20,21 @@ export default function TodosItems({d, addingTodos, handleTodoItemDelete}) {
                     <DeleteIcon />
                   </IconButton>
                 }
+                disablePadding
               >
-                <ListItemText>{dItem.text}</ListItemText>
+                <ListItemButton role={undefined} dense>
+                  <ListItemIcon>
+                    <Checkbox 
+                    edge="start"
+                    checked={dItem.completed}
+                    tabIndex={-1}
+                    disableRipple
+                    onChange={() => handleChange(dItem.id)}
+                    inputProps={{"aria-label": dItem.id}}
+                    />
+                  </ListItemIcon>
+                  <ListItemText id={dItem.id} primary={dItem.text} />
+                </ListItemButton>
               </ListItem>
             )
         })}

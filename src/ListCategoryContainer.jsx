@@ -67,6 +67,19 @@ export default function ListCategoryContainer() {
         setTodoCat(change);
     }
 
+    const toggleCheckbox = (todoId) => {
+        let updatedArray = [];
+        updatedArray = todoCat;
+        updatedArray.map((category) => {
+            category.items.map((item) => {
+                if (item.id === todoId) {
+                    item.completed = !item.completed;
+                }
+            })
+        })
+        setTodoCat([...updatedArray]);
+    }
+
     
 
     return (
@@ -84,7 +97,7 @@ export default function ListCategoryContainer() {
         </Box>
         <Divider orientation="vertical" flexItem />
         <Box m={3} style={{display: "flex", flexDirection: "column", justifyContent: "start"}}>
-            <Todos data={todoCat} addingTodos={addingTodos} handleTodoItemDelete={handleTodoItemDelete} />
+            <Todos data={todoCat} addingTodos={addingTodos} handleTodoItemDelete={handleTodoItemDelete} toggleCheckbox={toggleCheckbox} />
         </Box>
         </div>
     )
