@@ -7,7 +7,7 @@ export default function ListCategoryItem({tc, handleDelete, updatingClicked}) {
     }
 
     return (
-      <Box maxWidth={220} style={{textDecoration: tc.clicked === true ? "underline" : "none"}}>
+      <Box maxWidth={220} style={{backgroundColor: tc.clicked === true ? "whitesmoke" : "white", borderLeft: tc.clicked ? "4px solid #3875CB" : "none"}}>
         <ListItem
           secondaryAction={
             <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
