@@ -1,14 +1,13 @@
 import { ListItem, IconButton, ListItemText, Box } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-
 export default function ListCategoryItem({tc, handleDelete, updatingClicked}) {
     const handleClick = () => {
       updatingClicked(tc.id);
     }
 
     return (
-      <Box maxWidth={220}>
+      <Box maxWidth={220} style={{textDecoration: tc.clicked === true ? "underline" : "none"}}>
         <ListItem
           secondaryAction={
             <IconButton edge="end" aria-label="delete" onClick={handleDelete}>

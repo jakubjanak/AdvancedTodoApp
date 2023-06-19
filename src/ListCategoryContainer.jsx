@@ -101,10 +101,9 @@ export default function ListCategoryContainer() {
             <Typography variant="h4" component="h1" mb={2}>Categories</Typography>
             <AddCategoryForm addNewCategory={addNewCategory} />
             <List>
-                {
-                
+                {            
                 todoCat.map((tc) => {
-                    return <ListCategoryItem key={tc.id} tc={tc} setTodoCat={setTodoCat} todoCat={todoCat} handleDelete={() => handleDelete(tc.id)} updatingClicked={updatingClicked} />
+                    return <ListCategoryItem key={tc.id} tc={tc} handleDelete={() => handleDelete(tc.id)} updatingClicked={updatingClicked} />
                 })}
             </List>
         </Box>
