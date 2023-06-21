@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ListCategoryItem from "./ListCategoryItem";
 import AddCategoryForm from "./AddCategoryForm";
 import Todos from "./Todos";
+import "./ListCategoryContainer.css";
 
 export default function ListCategoryContainer() {
     // const initialValues = [
@@ -93,10 +94,20 @@ export default function ListCategoryContainer() {
         setTodoCat([...updatedArray]);
     }
 
+    const [width, setWidth] = useState(false);
+
+    window.addEventListener("resize", () => {
+            if (window.innerWidth <= 700) {
+                setWidth(true);
+            } else {
+                setWidth(false);
+            }
+    })
+
     
 
     return (
-        <div style={{display: "flex"}}>
+        <div id="mainDiv">
         <Box m={3}>
             <Typography variant="h4" component="h1" mb={2}>Categories</Typography>
             <AddCategoryForm addNewCategory={addNewCategory} />
@@ -107,7 +118,7 @@ export default function ListCategoryContainer() {
                 })}
             </List>
         </Box>
-        <Divider orientation="vertical" flexItem />
+        <Divider orientation={width ? "horizontal" : "vertical"} flexItem />
         <Box m={3} style={{display: "flex", flexDirection: "column", justifyContent: "start"}}>
             <Todos data={todoCat} addingTodos={addingTodos} handleTodoItemDelete={handleTodoItemDelete} toggleCheckbox={toggleCheckbox} />
         </Box>

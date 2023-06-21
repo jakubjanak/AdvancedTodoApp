@@ -20,7 +20,9 @@ export default function AddCategoryForm({addNewCategory}) {
     return (
         <form onSubmit={handleSubmit}>
         <TextField
+            fullWidth
             label="Add Category"
+            helperText={name === "" ? "The input field cannot be empty" : ""}
             variant="outlined"
             size="small"
             value={name}

@@ -11,19 +11,23 @@ export default function AddTodoForm({addingTodos}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = {id: crypto.randomUUID(), text: todo, completed: false};
-        addingTodos(data);
-        setTodo("");
+        if (todo !== "") {
+            const data = {id: crypto.randomUUID(), text: todo, completed: false};
+            addingTodos(data);
+            setTodo("");
+        }
     }
 
     return (
         <form onSubmit={handleSubmit} style={{marginBottom: "0.5rem"}}>
             <TextField
+                fullWidth
                 label="Add Task"
                 variant="outlined"
                 size="small"
                 value={todo}
                 onChange={handleChange}
+                helperText={todo === "" ? "The input field cannot be empty" : ""}
                 InputProps={{
                     endAdornment: <InputAdornment position="end">
                         <IconButton sx={{margin: "0", padding: "0"}} type="submit">
