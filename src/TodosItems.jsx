@@ -14,6 +14,7 @@ export default function TodosItems({d, addingTodos, handleTodoItemDelete, toggle
         {d.items.map((dItem) => {
             return (
                 <ListItem
+                style={{backgroundColor: dItem.priority === "low" ? "green" : dItem.priority === "medium" ? "yellow" : dItem.priority === "high" ? "red" : "none"}}
                 key={dItem.id}
                 secondaryAction={
                   <IconButton edge="end" aria-label="delete" onClick={() => handleTodoItemDelete(dItem.id)}>
