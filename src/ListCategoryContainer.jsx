@@ -57,7 +57,7 @@ export default function ListCategoryContainer() {
         newTodoCat.map((tc) => {
             if (tc.clicked) {
                 const items = tc.items;
-                items.push(data);
+                items.unshift(data);
             }
         })
         // this fking works!
