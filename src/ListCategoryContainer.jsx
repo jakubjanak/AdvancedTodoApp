@@ -90,6 +90,17 @@ export default function ListCategoryContainer() {
                     item.completed = !item.completed;
                 }
             })
+            category.items.map((item, indx) => {
+                if (item.id === todoId && item.completed === true) {
+                    const saveItem = item;
+                    category.items.splice(indx, 1);
+                    category.items.push(saveItem);
+                } else if (item.id === todoId && item.completed === false) {
+                    const saveItem = item;
+                    category.items.splice(indx, 1);
+                    category.items.unshift(saveItem);
+                }
+            })
         })
         setTodoCat([...updatedArray]);
     }
