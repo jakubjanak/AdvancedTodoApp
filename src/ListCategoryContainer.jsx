@@ -57,7 +57,41 @@ export default function ListCategoryContainer() {
         newTodoCat.map((tc) => {
             if (tc.clicked) {
                 const items = tc.items;
-                items.unshift(data);
+                const highPriorityArr = [];
+                const mediumPriorityArr = [];
+                const lowPriorityArr = [];
+                const noPriorityArr = [];
+                tc.items.map((item, indx) => {
+                    if (item.priority === "high") {
+                        highPriorityArr.push(item);
+                    } else if (item.priority === "medium") {
+                        mediumPriorityArr.push(item)
+                    } else if (item.priority === "low") {
+                        lowPriorityArr.push(item);
+                    } else {
+                        noPriorityArr.push(item);
+                    }
+                })
+
+                switch(data.priority) {
+                    case "high":
+                        highPriorityArr.unshift(data);
+                        break;
+                    case "medium":
+                        mediumPriorityArr.unshift(data);
+                        break;
+                    case "low":
+                        lowPriorityArr.unshift(data);
+                        break;
+                    default:
+                        noPriorityArr.unshift(data);
+                }
+
+                let allIn = [...highPriorityArr, ...mediumPriorityArr, ...lowPriorityArr, ...noPriorityArr];
+                console.log(allIn);
+
+                // items.unshift(data);
+                tc.items = [...allIn];
             }
         })
         // this fking works!
