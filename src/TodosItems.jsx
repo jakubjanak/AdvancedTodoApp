@@ -1,6 +1,7 @@
 import { ListItem, IconButton, ListItemText, Typography, Checkbox, ListItemButton, ListItemIcon } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddTodoForm from "./AddTodoForm"
+import CircleIcon from '@mui/icons-material/Circle';
+import AddTodoForm from "./AddTodoForm";
 
 export default function TodosItems({d, addingTodos, handleTodoItemDelete, toggleCheckbox}) {
     const handleChange = (id) => {
@@ -14,7 +15,7 @@ export default function TodosItems({d, addingTodos, handleTodoItemDelete, toggle
         {d.items.map((dItem) => {
             return (
                 <ListItem
-                style={{backgroundColor: dItem.priority === "low" ? "green" : dItem.priority === "medium" ? "yellow" : dItem.priority === "high" ? "red" : "none"}}
+                // style={{backgroundColor: dItem.priority === "low" ? "green" : dItem.priority === "medium" ? "yellow" : dItem.priority === "high" ? "red" : "none"}}
                 key={dItem.id}
                 secondaryAction={
                   <IconButton edge="end" aria-label="delete" onClick={() => handleTodoItemDelete(dItem.id)}>
@@ -34,6 +35,10 @@ export default function TodosItems({d, addingTodos, handleTodoItemDelete, toggle
                     inputProps={{"aria-label": dItem.id}}
                     />
                   </ListItemIcon>
+                  <ListItemIcon>
+                  <CircleIcon fontSize="small" style={{ color: dItem.priority === "low" ? "green" : dItem.priority === "medium" ? "yellow" : dItem.priority === "high" ? "red" : "initial" }}/>
+                  </ListItemIcon>
+                  
                   <ListItemText id={dItem.id} primary={dItem.text} />
                 </ListItemButton>
               </ListItem>
