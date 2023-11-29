@@ -61,8 +61,11 @@ export default function ListCategoryContainer() {
                 const mediumPriorityArr = [];
                 const lowPriorityArr = [];
                 const noPriorityArr = [];
+                const completedArr = [];
                 tc.items.map((item, indx) => {
-                    if (item.priority === "high") {
+                    if (item.completed === true) {
+                        completedArr.push(item)
+                    } else if (item.priority === "high") {
                         highPriorityArr.push(item);
                     } else if (item.priority === "medium") {
                         mediumPriorityArr.push(item)
@@ -87,7 +90,7 @@ export default function ListCategoryContainer() {
                         noPriorityArr.unshift(data);
                 }
 
-                let allIn = [...highPriorityArr, ...mediumPriorityArr, ...lowPriorityArr, ...noPriorityArr];
+                let allIn = [...highPriorityArr, ...mediumPriorityArr, ...lowPriorityArr, ...noPriorityArr, ...completedArr];
                 console.log(allIn);
 
                 // items.unshift(data);
