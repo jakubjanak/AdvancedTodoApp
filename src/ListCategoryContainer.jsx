@@ -56,13 +56,13 @@ export default function ListCategoryContainer() {
         newTodoCat = todoCat;
         newTodoCat.map((tc) => {
             if (tc.clicked) {
-                const items = tc.items;
+                // const items = tc.items;
                 const highPriorityArr = [];
                 const mediumPriorityArr = [];
                 const lowPriorityArr = [];
                 const noPriorityArr = [];
                 const completedArr = [];
-                tc.items.map((item, indx) => {
+                tc.items.map((item) => {
                     if (item.completed === true) {
                         completedArr.push(item)
                     } else if (item.priority === "high") {

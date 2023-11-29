@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import { useState } from "react";
+import "./AddTodoForm.css";
 
 export default function AddTodoForm({addingTodos}) {
     const [todo, setTodo] = useState("");
@@ -29,7 +30,7 @@ export default function AddTodoForm({addingTodos}) {
     }
 
     return (
-      <form onSubmit={handleSubmit} style={{ marginBottom: "0.5rem", display: "flex", alignItems: "flex-start", gap: "0.5rem"}}>
+      <form className="todosPage" onSubmit={handleSubmit} style={{ marginBottom: "0.5rem", display: "flex", alignItems: "flex-start", gap: "0.5rem"}}>
         <TextField
           fullWidth
           label="Add Task"
@@ -46,7 +47,7 @@ export default function AddTodoForm({addingTodos}) {
           //     </InputAdornment>
           // }}
         ></TextField>
-        <FormControl sx={{ m: 0, minWidth: 120 }} size="small">
+        <FormControl sx={{ m: 0, minWidth: 120 }} size="small" fullWidth>
           <Select
             value={priority}
             onChange={handleSelectChange}
@@ -63,7 +64,7 @@ export default function AddTodoForm({addingTodos}) {
         {/* <IconButton sx={{ margin: "0", padding: "0" }} type="submit">
           <AddIcon />
         </IconButton> */}
-        <Button variant="contained" startIcon={<AddIcon />} sx={{minWidth: 120, p: .95}} size="medium" type="submit">
+        <Button variant="contained" startIcon={<AddIcon />} sx={{minWidth: 120, p: .95}} size="medium" type="submit" fullWidth>
           Add
         </Button>
       </form>
