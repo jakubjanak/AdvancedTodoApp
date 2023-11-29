@@ -32,7 +32,7 @@ export default function AddTodoForm({addingTodos}) {
     return (
       <form className="todosPage" onSubmit={handleSubmit} style={{ marginBottom: "0.5rem", display: "flex", alignItems: "flex-start", gap: "0.5rem"}}>
         <TextField
-          className="textField"
+          fullWidth
           label="Add Task"
           variant="outlined"
           size="small"
@@ -47,7 +47,7 @@ export default function AddTodoForm({addingTodos}) {
           //     </InputAdornment>
           // }}
         ></TextField>
-        <FormControl sx={{ m: 0, minWidth: 120 }} size="small" fullWidth>
+        <FormControl sx={{ m: 0, minWidth: 120 }} size="small" className="fullWidth">
           <Select
             value={priority}
             onChange={handleSelectChange}
@@ -64,7 +64,7 @@ export default function AddTodoForm({addingTodos}) {
         {/* <IconButton sx={{ margin: "0", padding: "0" }} type="submit">
           <AddIcon />
         </IconButton> */}
-        <Button variant="contained" startIcon={<AddIcon />} sx={{minWidth: 120, p: .95}} size="medium" type="submit" fullWidth>
+        <Button variant="contained" startIcon={<AddIcon />} sx={{minWidth: 120, p: .95}} size="medium" type="submit" className="fullWidth">
           Add
         </Button>
       </form>
