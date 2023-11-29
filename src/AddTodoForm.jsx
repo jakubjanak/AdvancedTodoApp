@@ -32,7 +32,7 @@ export default function AddTodoForm({addingTodos}) {
     return (
       <form className="todosPage" onSubmit={handleSubmit} style={{ marginBottom: "0.5rem", display: "flex", alignItems: "flex-start", gap: "0.5rem"}}>
         <TextField
-          fullWidth
+          className="textField"
           label="Add Task"
           variant="outlined"
           size="small"

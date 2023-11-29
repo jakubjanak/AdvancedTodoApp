@@ -2,8 +2,16 @@
     flex-direction: initial;
 }
 
-@media screen and (max-width: 500px) {
+.textField {
+    min-width: 400px !important;
+}
+
+@media screen and (max-width: 700px) {
     .todosPage {
         flex-direction: column;
+    }
+
+    .textField {
+        width: 100%;
     }
 }
