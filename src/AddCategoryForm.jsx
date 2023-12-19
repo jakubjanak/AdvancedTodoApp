@@ -1,8 +1,9 @@
 import { TextField, InputAdornment, IconButton } from "@mui/material"
 import AddIcon from '@mui/icons-material/Add';
 import { useState } from "react";
+import { addNewCategory } from "./utils/utils";
 
-export default function AddCategoryForm({addNewCategory}) {
+export default function AddCategoryForm({setUseState}) {
     const [name, setName] = useState("");
 
     const handleChange = (e) => {
@@ -12,7 +13,7 @@ export default function AddCategoryForm({addNewCategory}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (name !== "") {
-            addNewCategory({id: crypto.randomUUID(), name: name, items: [], clicked: false});
+            addNewCategory({id: crypto.randomUUID(), name: name, items: [], clicked: false}, setUseState)
         setName("");
         }
     }

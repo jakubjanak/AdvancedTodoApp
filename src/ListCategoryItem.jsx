@@ -1,9 +1,10 @@
 import { ListItem, IconButton, ListItemText, Box } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { chosenCategory } from "./utils/utils";
 
-export default function ListCategoryItem({tc, handleDelete, updatingClicked}) {
+export default function ListCategoryItem({tc, handleDelete, setUseState, todoData}) {
     const handleClick = () => {
-      updatingClicked(tc.id);
+      chosenCategory(tc.id, setUseState, todoData);
     }
 
     // CAPITALIZING FIRST LETTER IN CATEGORY ITEMS
