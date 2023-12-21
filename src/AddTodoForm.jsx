@@ -7,8 +7,9 @@ import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import { useState } from "react";
 import "./AddTodoForm.css";
+import { addNewTask } from "./utils/utils";
 
-export default function AddTodoForm({addingTodos}) {
+export default function AddTodoForm({setUseState, todoData}) {
     const [todo, setTodo] = useState("");
     const [priority, setPriority] = useState('');
 
@@ -20,7 +21,8 @@ export default function AddTodoForm({addingTodos}) {
         e.preventDefault();
         if (todo !== "") {
             const data = {id: crypto.randomUUID(), text: todo, priority: priority, completed: false};
-            addingTodos(data);
+            // addingTodos(data);
+            addNewTask(todoData, data, setUseState);
             setTodo("");
         }
     }

@@ -10,15 +10,16 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import CircleIcon from "@mui/icons-material/Circle";
 import AddTodoForm from "./AddTodoForm";
+import { deleteTask } from "./utils/utils";
+import { toggleTaskCheckbox } from "./utils/utils";
 
 export default function TodosItems({
   d,
-  addingTodos,
-  handleTodoItemDelete,
-  toggleCheckbox,
+  setUseState,
+  todoData,
 }) {
   const handleChange = (id) => {
-    toggleCheckbox(id);
+    toggleTaskCheckbox(todoData, id, setUseState);
   };
 
   return (
@@ -26,7 +27,7 @@ export default function TodosItems({
       <Typography variant="h4" commponent="h1" mb={2}>
         {d.name}
       </Typography>
-      <AddTodoForm addingTodos={addingTodos} />
+      <AddTodoForm setUseState={setUseState} todoData={todoData} />
       {d.items.map((dItem) => {
         return (
           <ListItem
@@ -36,7 +37,7 @@ export default function TodosItems({
               <IconButton
                 edge="end"
                 aria-label="delete"
-                onClick={() => handleTodoItemDelete(dItem.id)}
+                onClick={() => deleteTask(todoData, setUseState, dItem.id)}
               >
                 <DeleteIcon />
               </IconButton>
