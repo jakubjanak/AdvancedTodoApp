@@ -1,7 +1,9 @@
+import InputForm from "../components/InputForm";
+
 function Homepage() {
     return (
         <>
-        <h1>Hello World!</h1>
+        <InputForm />
         </>
     )
 }

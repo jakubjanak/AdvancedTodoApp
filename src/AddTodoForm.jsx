@@ -21,7 +21,6 @@ export default function AddTodoForm({setUseState, todoData}) {
         e.preventDefault();
         if (todo !== "") {
             const data = {id: crypto.randomUUID(), text: todo, priority: priority, completed: false};
-            // addingTodos(data);
             addNewTask(todoData, data, setUseState);
             setTodo("");
         }
