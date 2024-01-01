@@ -1,7 +1,7 @@
 import CssBaseline from '@mui/material/CssBaseline';
-import Navbar from "./Navbar";
-import ListCategoryContainer from './ListCategoryContainer';
-import Footer from './Footer';
+import Navbar from "./components/Navbar.jsx";
+// import ListCategoryContainer from './ListCategoryContainer';
+import Footer from './components/Footer.jsx';
 import Homepage from "./views/Homepage.jsx";
 
 function App() {
@@ -10,7 +10,6 @@ function App() {
       <CssBaseline />
       <Navbar />
       <Homepage />
-      <ListCategoryContainer />
       <Footer />
     </>
   )

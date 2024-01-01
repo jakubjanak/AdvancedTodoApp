@@ -1,33 +1,20 @@
-import {
-  ListItem,
-  IconButton,
-  ListItemText,
-  Typography,
-  Checkbox,
-  ListItemButton,
-  ListItemIcon,
-} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import CircleIcon from "@mui/icons-material/Circle";
-import AddTodoForm from "./AddTodoForm";
-import { deleteTask } from "./utils/utils";
-import { toggleTaskCheckbox } from "./utils/utils";
+import { Typography, ListItem, IconButton, ListItemButton, ListItemIcon, ListItemText, Checkbox } from "@mui/material";
+import Delete from "@mui/icons-material/Delete";
+import Circle from "@mui/icons-material/Circle";
+import InputForm from "./InputForm";
+import { deleteTask, toggleTaskCheckbox } from "../utils/utils";
 
-export default function TodosItems({
-  d,
-  setUseState,
-  todoData,
-}) {
-  const handleChange = (id) => {
-    toggleTaskCheckbox(todoData, id, setUseState);
-  };
+export default function Task({d, setUseState, todoData}) {
+    const handleChange = (id) => {
+        toggleTaskCheckbox(todoData, id, setUseState);
+      };
 
-  return (
-    <>
-      <Typography variant="h4" commponent="h1" mb={2}>
+    return (
+        <>
+        <Typography variant="h4" commponent="h1" mb={2}>
         {d.name}
       </Typography>
-      <AddTodoForm setUseState={setUseState} todoData={todoData} />
+      <InputForm setUseState={setUseState} todoData={todoData} isCategory={false} />
       {d.items.map((dItem) => {
         return (
           <ListItem
@@ -39,7 +26,7 @@ export default function TodosItems({
                 aria-label="delete"
                 onClick={() => deleteTask(todoData, setUseState, dItem.id)}
               >
-                <DeleteIcon />
+                <Delete />
               </IconButton>
             }
             disablePadding
@@ -56,7 +43,7 @@ export default function TodosItems({
                 />
               </ListItemIcon>
               <ListItemIcon>
-                <CircleIcon
+                <Circle
                   fontSize="small"
                   style={{
                     color:
@@ -76,19 +63,6 @@ export default function TodosItems({
           </ListItem>
         );
       })}
-    </>
-  );
+        </>
+    )
 }
-
-// d.items.map((item) => {
-//     return (
-//   <ListItem
-//     key={item.id}
-//     secondaryAction={
-//       <IconButton edge="end" aria-label="delete">
-//         <DeleteIcon />
-//       </IconButton>
-//     }
-//   >
-//     <ListItemText>{item.text}</ListItemText>
-//   </ListItem>

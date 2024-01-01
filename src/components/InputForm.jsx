@@ -1,6 +1,8 @@
 import { TextField, FormControl, Select, MenuItem, FormHelperText, Button } from "@mui/material";
 import Add from "@mui/icons-material/Add";
 import { useState } from "react";
+import { addNewCategory, addNewTask } from "../utils/utils";
+import "../styles/InputForm.css";
 
 export default function InputForm({setUseState, todoData, isCategory=false}) {
     const [formValue, setFormValue] = useState("");
@@ -14,9 +16,22 @@ export default function InputForm({setUseState, todoData, isCategory=false}) {
         setPriorityValue(e.target.value);
     }
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (formValue !== "") {
+        if (isCategory === true) {
+          addNewCategory({id: crypto.randomUUID(), name: formValue, items: [], clicked: false}, setUseState);
+          setFormValue("");
+        } else {
+          addNewTask(todoData, {id: crypto.randomUUID(), text: formValue, priority: priorityValue, completed: false}, setUseState);
+          setFormValue("");
+        }
+      }
+    }
+
     return (
         <>
-            <form style={{display: "flex", gap: "0.5rem", alignItems: "flex-start"}}>
+            <form style={{display: "flex", gap: "0.5rem", alignItems: "flex-start"}} onSubmit={handleSubmit} className="form">
                 <TextField
                     fullWidth
                     label={isCategory ===  true ? "Add Category" : "Add Task"}
@@ -64,7 +79,7 @@ export default function InputForm({setUseState, todoData, isCategory=false}) {
                 </Select>
                 <FormHelperText>Priority</FormHelperText>
               </FormControl> */}
-              <Button variant="contained" startIcon={<Add />} sx={{minWidth: 120, p: .95}} size="medium" type="submit" className="fullWidth">
+              <Button variant="contained" startIcon={<Add />} sx={{minWidth: 120, p: .95, mb: 1}} size="medium" type="submit" className="fullWidth">
                 Add
                 </Button>
             </form>
