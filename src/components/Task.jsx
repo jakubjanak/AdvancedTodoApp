@@ -3,10 +3,12 @@ import Delete from "@mui/icons-material/Delete";
 import Circle from "@mui/icons-material/Circle";
 import InputForm from "./InputForm";
 import { deleteTask, toggleTaskCheckbox } from "../utils/utils";
+import { sortTodosByTheirPriority } from "../utils/utils";
 
 export default function Task({d, setUseState, todoData}) {
     const handleChange = (id) => {
         toggleTaskCheckbox(todoData, id, setUseState);
+        sortTodosByTheirPriority(todoData, setUseState);
       };
 
     return (

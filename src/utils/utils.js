@@ -123,3 +123,42 @@ export function toggleTaskCheckbox(todoData, taskId, setUseState) {
     })
     setUseState([...todoData]);
 }
+
+export function sortTodosByTheirPriority(todoData, setUseState) {
+    let helpfulArray = new Array;
+    helpfulArray = todoData;
+
+    helpfulArray.map((category) => {
+
+        if (category.clicked) {
+
+            const highPriorityTasks = new Array;
+            const mediumPriorityTasks = new Array;
+            const lowPriorityTasks = new Array;
+            const noPriorityTasks = new Array;
+            const completedTasks = new Array;
+
+            category.items.map((task) => {
+                if (task.completed) {
+                    completedTasks.push(task)
+                } else {
+                    switch(task.priority) {
+                        case "high":
+                            highPriorityTasks.push(task);
+                            break;
+                        case "medium":
+                            mediumPriorityTasks.push(task);
+                            break;
+                        case "low":
+                            lowPriorityTasks.push(task);
+                            break;
+                        default:
+                            noPriorityTasks.push(task);
+                    }
+                }
+                category.items = [...highPriorityTasks, ...mediumPriorityTasks, ...lowPriorityTasks, ...noPriorityTasks, ...completedTasks];
+            })
+        }
+    })
+    setUseState([...helpfulArray]);
+}
